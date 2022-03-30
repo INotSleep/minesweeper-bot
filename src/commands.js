@@ -295,8 +295,8 @@ const commands = new CommandArgument(types.root, guildprefixes.defaultprefix, nu
 				channelId: source.channelId,
 				inputs: inputs
 			};
-			if (findGuild(item) == -1) addItem(item)
-			else changeItem(get(findGuild(item)), item);
+			if (findGuild(item.guildId) == -1) addItem(item)
+			else changeItem(get(findGuild(item.guildId)), item);
                         return "Success"
 		})
 		.setOptions([
