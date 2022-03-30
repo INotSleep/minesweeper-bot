@@ -22,6 +22,7 @@ Here's the other commands I listen to:
 * `/howtoplay` — displays a tutorial about how to play the game.
 * `/news` — displays info about my latest updates.
 * `/ping` — displays my heartbeat ping.
+* `/auto` — same as `/minesweeper`, but set channel to automacly send game with interval 1 minute.
 
 The following are text commands only:
 * `/setprefix` — allows you to change the prefix of all my text commands. Requires Manage Server permission to execute.
