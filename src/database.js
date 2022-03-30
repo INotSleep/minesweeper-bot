@@ -52,12 +52,16 @@ exports.find = function (item) {
 
 exports.get = function (index) {
   return index < db.length ? db[index] : {};
-}
+};
 
 exports.getDB = function () {
   return db;
-}
+};
 
 exports.findGuild = function (guildId) {
   return db.indexOf(db.find(item => item.guildId == guildId));
-}
+};
+
+exports.findChannel = function (channelId) {
+  return db.indexOf(db.find(item => item.channelId == channelId));
+};
