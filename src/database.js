@@ -3,7 +3,7 @@ const { open, writeFile } = require("fs/promises");
 var db = []
 
 // Fixes empoty or not existing db file
-open("../db.json", "r+").then(async (file: any) => {
+open("../db.json", "r+").then(async (file) => {
   var rawFile = await file.read();
   var a = "";
 	var fileContent = rawFile.buffer.toString();
