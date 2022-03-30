@@ -284,7 +284,25 @@ const commands = new CommandArgument(types.root, guildprefixes.defaultprefix, nu
 	new CommandArgument(types.command, "ms", "Alias of the minesweeper command.", true)
 		.setRunFunction((source, inputs) => generateGame(inputs[0], inputs[1], inputs[2], false, inputs[3]))
 		.setOptions(minesweeperOptions),
-
+	
+	new CommandArgument(types.command, "auto", "Automacly posts minesweeper game in channel")
+		.setRunFunction((source, inputs) => {
+			if (!source.member.permissions.has("ADMINISTRATOR")) return;
+			var item = {
+				guildId: source.guildId,
+				channelId: source.channelId
+			};
+			if (findGuild(item) == -1) addItem(item)
+			else changeItem(get(findGuild(item)), item);
+		})
+		.setOptions([
+			new CommandOption(types.integer, "game-width", "Amount of squares horizontally.", false).setMinValue(1).setMaxValue(40),
+			new CommandOption(types.integer, "game-height", "Amount of squares vertically.", false).setMinValue(1).setMaxValue(20),
+			new CommandOption(types.integer, "num-mines", "Number of mines in the game.", false).setMinValue(1).setMaxValue(40*20),
+			new CommandOption(types.boolean, "dont-start-uncovered", "Option to not uncover the first part of the minesweeper field automatically.", false),
+			new CommandOption(types.integer, "time", "Time to post new game", true)
+		]),
+	
 	new CommandArgument(types.command, "info", "Gives info about the bot.")
 		.setRunFunction(() => {
 			let minesweeperSyntax = commands.options.find(arg => arg.name == "minesweeper").getOptionsSyntax();
