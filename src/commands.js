@@ -2,7 +2,8 @@ const generateGame = require("./generateGame.js");
 const guildprefixes = require("./guildprefixes.js");
 const updates = require("../news.json");
 const package = require("../package.json");
-const { changeItem, get, findGuild, addItem } = require("./database.js")
+const { changeItem, get, findGuild, addItem } = require("./database.js");
+const { createTimeout } = require("./auto.js");
 
 /*
 The commands object stores the syntax and function of all of the bot's commands. It is structured in the same way as Discord's Application Command structure:
@@ -291,17 +292,19 @@ const commands = new CommandArgument(types.root, guildprefixes.defaultprefix, nu
 			if (!source.member.permissions.has("ADMINISTRATOR")) return;
 			var item = {
 				guildId: source.guildId,
-				channelId: source.channelId
+				channelId: source.channelId,
+				interval: inputs[4]*60*1000
 			};
 			if (findGuild(item) == -1) addItem(item)
 			else changeItem(get(findGuild(item)), item);
+			createInterval(item.channelId, item.interval);
 		})
 		.setOptions([
 			new CommandOption(types.integer, "game-width", "Amount of squares horizontally.", false).setMinValue(1).setMaxValue(40),
 			new CommandOption(types.integer, "game-height", "Amount of squares vertically.", false).setMinValue(1).setMaxValue(20),
 			new CommandOption(types.integer, "num-mines", "Number of mines in the game.", false).setMinValue(1).setMaxValue(40*20),
 			new CommandOption(types.boolean, "dont-start-uncovered", "Option to not uncover the first part of the minesweeper field automatically.", false),
-			new CommandOption(types.integer, "time", "Time to post new game", true)
+			new CommandOption(types.integer, "time", "Time to post new game in minutes", true).setMinValue(1).setMaxValue(60)
 		]),
 	
 	new CommandArgument(types.command, "info", "Gives info about the bot.")
