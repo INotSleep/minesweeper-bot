@@ -15,6 +15,7 @@ const Discord = require("discord.js");
 const auth = require("../auth.json");
 const commands = require("./commands.js");
 const guildprefixes = require("./guildprefixes.js");
+const startAuto = require("./auto.js")
 
 log("All modules loaded");
 
@@ -85,6 +86,7 @@ setTimeout(report, getTimeUntilNextHour());
 
 client.on("ready", () => {
 	log(`Ready! Current guild count: ${getGuildCount()}`);
+	startAuto(client);
 });
 
 client.on("disconnected", event => {
@@ -287,4 +289,3 @@ function executeCommand(source, command, options) {
 };
 
 // The generateGame function and the command tree used to be here, but they have been moved to their own files.
-exports.client = client;
