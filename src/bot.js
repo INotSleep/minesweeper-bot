@@ -287,3 +287,4 @@ function executeCommand(source, command, options) {
 };
 
 // The generateGame function and the command tree used to be here, but they have been moved to their own files.
+exports.client = client;
