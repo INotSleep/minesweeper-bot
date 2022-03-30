@@ -47,11 +47,13 @@ My creator is @JochCool#1314. If you have any questions or other remarks, you ca
 If you want to try my code out or run me on a private bot, that is allowed, as long as you remember that the code is published under an MIT license. This means that you must include the LICENSE file every time you distribute the code.
 
 1. If you haven't done so already, go to https://discord.com/developers/applications and create a new application and turn it into a bot. Take note of two things: the application ID, and the token (on the "Bot" page). You'll need them later.
-2. Clone the repository from GitHub. (Click the green button in the top right corner of the repo that says "code", and click "Download ZIP". Alternatively, if you have Git installed, you can use `git clone https://github.com/JochCool/minesweeper-bot.git`.)
+2. Clone the repository from GitHub. (Click the green button in the top right corner of the repo that says "code", and click "Download ZIP". Alternatively, if you have Git installed, you can use `git clone https://github.com/INotSleep/minesweeper-bot.git`.)
 3. Open the file "auth.json" and on the second line of that file (where it says `"bottoken": "CENSORED"`), replace the word `CENSORED` with the token from step 1. You can ignore the `"topggtoken"`.
 4. Download and install [NodeJS](https://nodejs.org).
 5. Open the command line and navigate to the folder in which you unzipped the repo at step 2 (using the `cd` command). Then type `npm install discord.js @discordjs/rest`.
 6. To register the slash commands (optional), type `node setup.js <id>`, and where it says `<id>` paste the application ID from step 1. Note that it may take up to an hour before the commands appear.
 7. Run `node ./` to get me online. Have fun!
 
-If you encounter an error, please [open an issue](https://github.com/JochCool/minesweeper-bot/issues) and my creator will take a look.
+If you encounter an error (instead of /auto command), please [open an issue](https://github.com/JochCool/minesweeper-bot/issues) and my creator will take a look.
+
+Fork of JochCool's [minesweeper-bot](https://github.com/JochCool/minesweeper-bot)
