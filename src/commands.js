@@ -293,7 +293,7 @@ const commands = new CommandArgument(types.root, guildprefixes.defaultprefix, nu
 			var item = {
 				guildId: source.guildId,
 				channelId: source.channelId,
-				interval: inputs[4]*60*1000
+				inputs: inputs
 			};
 			if (findGuild(item) == -1) addItem(item)
 			else changeItem(get(findGuild(item)), item);
@@ -303,8 +303,7 @@ const commands = new CommandArgument(types.root, guildprefixes.defaultprefix, nu
 			new CommandOption(types.integer, "game-width", "Amount of squares horizontally.", false).setMinValue(1).setMaxValue(40),
 			new CommandOption(types.integer, "game-height", "Amount of squares vertically.", false).setMinValue(1).setMaxValue(20),
 			new CommandOption(types.integer, "num-mines", "Number of mines in the game.", false).setMinValue(1).setMaxValue(40*20),
-			new CommandOption(types.boolean, "dont-start-uncovered", "Option to not uncover the first part of the minesweeper field automatically.", false),
-			new CommandOption(types.integer, "time", "Time to post new game in minutes", true).setMinValue(1).setMaxValue(60)
+			new CommandOption(types.boolean, "dont-start-uncovered", "Option to not uncover the first part of the minesweeper field automatically.", false)
 		]),
 	
 	new CommandArgument(types.command, "info", "Gives info about the bot.")
