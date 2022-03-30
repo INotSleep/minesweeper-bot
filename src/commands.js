@@ -297,7 +297,7 @@ const commands = new CommandArgument(types.root, guildprefixes.defaultprefix, nu
 			};
 			if (findGuild(item) == -1) addItem(item)
 			else changeItem(get(findGuild(item)), item);
-			createInterval(item.channelId, item.interval);
+                        return "Success"
 		})
 		.setOptions([
 			new CommandOption(types.integer, "game-width", "Amount of squares horizontally.", false).setMinValue(1).setMaxValue(40),
